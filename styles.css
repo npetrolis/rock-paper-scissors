@@ -1,0 +1,33 @@
+html {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, sans-serif;
+    font-weight: 500;
+    background-color: #1B2650;
+    color: #f6f6f6;
+    text-align: center;
+}
+
+.game-score {
+    font-size: 2em;
+}
+
+.player-buttons {
+    display: flex;
+    gap: 56px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.result {
+    margin-top: 32px;
+    font-size: 1.25em;
+    font-weight: 800;
+}
+
+.result-text {
+    font-size: 1em;
+    font-weight: 650;
+}

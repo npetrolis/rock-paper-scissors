@@ -1,22 +1,14 @@
-const para = document.querySelector('p');
-const title = document.querySelector('h1');
-const select = document.querySelector('select');
+const resultText = document.querySelector('.result-text');
+const result = document.querySelector('.result');
+const gameScore = document.querySelector('.game-score');
+const rockButton = document.querySelector('.rock');
+const paperButton = document.querySelector('.paper');
+const scissorsButton = document.querySelector('.scissors');
+
 let computerSelection;
 
-select.addEventListener('change', playGame);
 
-function playerChoice() {
-    if (select.value == 'rock') {
-        playerSelection = 'rock';
-        return playerSelection;
-    } else if (select.value == 'paper') {
-        playerSelection = 'paper';
-        return playerSelection;
-    } else if (select.value == 'scissors') {
-        playerSelection = 'scissors';
-        return playerSelection;
-    }
-}
+// COMPUTER CHOICE
 
 function getComputerChoice() {
     const weapons = ['rock', 'paper', 'scissors'];
@@ -24,41 +16,59 @@ function getComputerChoice() {
     return choice;
 }
 
-function playRound(playerSelection, computerSelection) {
+// GAME LOGIC
 
-    playerSelection = playerChoice();
+function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
     if (
     (playerSelection == 'rock' && computerSelection == 'rock') ||
     (playerSelection == 'paper' && computerSelection == 'paper') ||
     (playerSelection == 'scissors' && computerSelection == 'scissors')
     ) {
-        title.textContent = `DRAW`
-        para.textContent = 'It\'s a tie! No winner.'
+        result.textContent = `DRAW`
+        resultText.textContent = 'It\'s a tie! No winner.'
     } else if (
         (playerSelection == 'rock' && computerSelection == 'scissors') ||
         (playerSelection == 'paper' && computerSelection == 'rock') ||
         (playerSelection == 'scissors' && computerSelection == 'paper')
         ) {
-        title.textContent = `WIN!`
-        para.textContent = `You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}.`
+        playerScore++;
+        result.textContent = `WIN!`
+        resultText.textContent = `You win! ${capitalize(playerSelection)} beats ${capitalize(computerSelection)}.`
     } else if (
         (playerSelection == 'scissors' && computerSelection == 'rock') ||
         (playerSelection == 'paper' && computerSelection == 'scissors') ||
         (playerSelection == 'rock' && computerSelection == 'paper')
         ) {
-        title.textContent = `LOSS`
-        para.textContent = `You lose... ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`
+        computerScore++;
+        result.textContent = `LOSS`
+        resultText.textContent = `You lose... ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`
     }
 }
 
-function playGame() {
-    playerChoice();
-    playRound(playerSelection, computerSelection);
+
+// SCORE KEEPING AND GAME INITIALIZATION
+
+let playerScore = 0;
+let computerScore = 0;
+gameScore.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+
+function updateScore(playerScore, computerScore) {
+    gameScore.textContent = `Player: ${playerScore} - Computer: ${computerScore}`
 }
 
+function playGame() {
+    playRound(playerSelection, computerSelection);
+    updateScore(playerScore, computerScore);
+}
 
-//HELPER FUNCTIONS
+// PLAYER CHOICE
+
+rockButton.addEventListener('click', () => {playerSelection = 'rock'; playGame();});
+paperButton.addEventListener('click', () => {playerSelection = 'paper'; playGame();});
+scissorsButton.addEventListener('click', () => {playerSelection = 'scissors'; playGame();});
+
+// HELPER FUNCTIONS
 
 function capitalize(string) {
     string = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
