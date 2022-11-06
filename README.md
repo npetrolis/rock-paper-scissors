@@ -20,4 +20,4 @@ It's a WIP project and extended functionality is expected to be added over time.
 <ul>
 <li>Initial game logic declared</li>
 <li>Skeleton HTML file and basic .js linking with console output only</li>
-  </ul
+  </ul>
