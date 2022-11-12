@@ -79,3 +79,34 @@ body {
 .computer-score-display {
     font-size: 2em;
 }
+
+.end-display {
+    border: grey 1px solid;
+    border-radius: 1em;
+    width: 600px;
+    height: 230px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(184, 184, 243, 1);
+    display: none;
+}
+
+.end-display-status {
+    font-size: 4em;
+    color: rgb(49, 49, 49);
+    margin-top: 0.3em;
+}
+
+.end-display-msg {
+    font-size: 1.5em;
+    color: rgb(49, 49, 49);
+}
+
+.replay-game {
+    font-size: 2.25em;
+    margin-top: 16px;
+    color: rgb(49, 49, 49);
+    cursor: pointer;
+}

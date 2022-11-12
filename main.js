@@ -8,9 +8,12 @@ const scissorsButton = document.querySelector('.scissors-button');
 const botRock = document.querySelector('.bot-rock');
 const botPaper = document.querySelector('.bot-paper');
 const botScissors = document.querySelector('.bot-scissors');
+const endDisplay = document.querySelector('.end-display');
+const replayButton = document.querySelector('.replay-game');
+const endDisplayStatus = document.querySelector('.end-display-status');
+const endDisplayMsg = document.querySelector('.end-display-msg');
 
 let computerSelection;
-
 
 // COMPUTER CHOICE
 
@@ -50,6 +53,11 @@ function getComputerChoice() {
 // GAME LOGIC
 
 function playRound(playerSelection, computerSelection) {
+    if (playerScore == 5 || computerScore == 5) {
+        declareWinner();
+    }
+    else {
+    
     computerSelection = getComputerChoice();
         if (
     (playerSelection == 'rock' && computerSelection == 'rock') ||
@@ -76,6 +84,7 @@ function playRound(playerSelection, computerSelection) {
         resultText.textContent = `You lose... ${capitalize(computerSelection)} beats ${capitalize(playerSelection)}`
     }
 }
+}
 
 
 
@@ -96,38 +105,42 @@ function playGame() {
     updateScore(playerScore, computerScore);
 }
 
+// DETERMINING THE WINNER
+
+function declareWinner() {
+    if (playerScore > computerScore) {
+        endDisplay.style.display = 'block';
+        endDisplayStatus.textContent = 'VICTORY!';
+        endDisplayMsg.textContent = `You won with a score of ${playerScore} to ${computerScore}. Press the button below to play again.`
+    } else {
+        endDisplay.style.display = 'block';
+        endDisplayStatus.textContent = 'DEFEAT...';
+        endDisplayMsg.textContent = `You lost with a score of ${playerScore} to ${computerScore}. Press the button below to try again!`
+    }
+}
+
+// RESETTING THE GAME
+
+replayButton.addEventListener('click', () => {
+    window.location.reload();
+})
 
 // PLAYER CHOICE
 
 rockButton.addEventListener('click', () => {
     playerSelection = 'rock'; 
     playGame();
-    rockButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-    rockButton.style.color = 'black';
-    paperButton.style.backgroundColor = '';
-    paperButton.style.color = '';
-    scissorsButton.style.backgroundColor = '';
-    scissorsButton.style.color = '';
+    playerButtons(playerSelection);
 });
 paperButton.addEventListener('click', () => {
     playerSelection = 'paper'; 
     playGame();
-    rockButton.style.backgroundColor = '';
-    rockButton.style.color = '';
-    paperButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-    paperButton.style.color = 'black';
-    scissorsButton.style.backgroundColor = '';
-    scissorsButton.style.color = '';
+    playerButtons(playerSelection);
 });
 scissorsButton.addEventListener('click', () => {
     playerSelection = 'scissors'; 
     playGame();
-    rockButton.style.backgroundColor = '';
-    rockButton.style.color = '';
-    paperButton.style.backgroundColor = '';
-    paperButton.style.color = '';
-    scissorsButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-    scissorsButton.style.color = 'black';
+    playerButtons(playerSelection);
 });
 
 // HELPER FUNCTIONS
@@ -135,4 +148,33 @@ scissorsButton.addEventListener('click', () => {
 function capitalize(string) {
     string = string.charAt(0).toUpperCase() + string.slice(1).toLowerCase()
     return string;
+}
+
+function playerButtons(playerSelection) {
+    switch (playerSelection) {
+        case 'rock': 
+            rockButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            rockButton.style.color = 'black';
+            paperButton.style.backgroundColor = '';
+            paperButton.style.color = '';
+            scissorsButton.style.backgroundColor = '';
+            scissorsButton.style.color = '';
+        break;
+        case 'paper':
+            rockButton.style.backgroundColor = '';
+            rockButton.style.color = '';
+            paperButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            paperButton.style.color = 'black';
+            scissorsButton.style.backgroundColor = '';
+            scissorsButton.style.color = '';
+        break;
+        case 'scissors':
+            rockButton.style.backgroundColor = '';
+            rockButton.style.color = '';
+            paperButton.style.backgroundColor = '';
+            paperButton.style.color = '';
+            scissorsButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            scissorsButton.style.color = 'black';
+        break;
+    }
 }

@@ -3,6 +3,12 @@ A simple RPS exercise for TheOdinProject's cirriculum.
 It's a WIP project and extended functionality is expected to be added over time.
 
 <h3>Here's a list of changes so far:</h3>
+
+<h4>V1.4</h4>
+<ul>
+<li>Added end game screen</li>
+<li>Added ability to reset the game</li>
+<li>Added a declareWinner() function, new constants for querySelectors and broke down some functions for readability</li>
 <h4>V1.3</h4>
 <ul>
 <li>HTML Reworked -- Visualised computer's choice, moved scoreboards relative to the choices</li>
