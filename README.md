@@ -3,7 +3,12 @@ A simple RPS exercise for TheOdinProject's cirriculum.
 It's a WIP project and extended functionality is expected to be added over time.
 
 <h3>Here's a list of changes so far:</h3>
-<h4>V1.2</h4>
+<h4>V1.3</h4>
+<ul>
+<li>HTML Reworked -- Visualised computer's choice, moved scoreboards relative to the choices</li>
+<li>Added javascript required to dynamically reflect player and computer choices on HTML</li>
+<li>Editted the buttons, their positioning and their responsiveness.</li>
+</ul><h4>V1.2</h4>
 <ul>
 <li>HTML Reworked -- Added scorekeeping, removed selection and added buttons for playerChoice</li>
 <li>main.js reorganized -- Added comments, removed functions and added scorekeeping, new variables and eventListeners for HTML states</li>

@@ -10,15 +10,40 @@ body {
     text-align: center;
 }
 
-.game-score {
-    font-size: 2em;
+.game-options {
+    display: flex;
+    justify-content: center;
+    gap: 64px;
 }
 
 .player-buttons {
     display: flex;
     gap: 56px;
     justify-content: center;
-    margin-top: 32px;
+    margin-top: 16px;
+    border: white 1px solid;
+    border-radius: 1.5em;
+    padding: 36px;
+}
+
+.computer-choice {
+    display: flex;
+    gap: 56px;
+    justify-content: center;
+    margin-top: 16px;
+    border: white 1px solid;
+    border-radius: 1.5em;
+    padding: 36px;
+}
+
+.bot-rock,
+.bot-paper,
+.bot-scissors {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0.5em;
+    padding: 16px;
+    width: 64px;
+    transition: ease 0.7s;
 }
 
 .result {
@@ -30,4 +55,27 @@ body {
 .result-text {
     font-size: 1em;
     font-weight: 650;
+}
+
+.rock-button,
+.paper-button,
+.scissors-button {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 0.5em;
+    padding: 16px;
+    width: 64px;
+    transition: ease 0.7s;
+}
+
+.rock-button:hover,
+.paper-button:hover,
+.scissors-button:hover {
+    background-color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    border:rgba(255, 255, 255, 1) 1px solid;
+}
+
+.player-score-display,
+.computer-score-display {
+    font-size: 2em;
 }

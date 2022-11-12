@@ -1,9 +1,13 @@
 const resultText = document.querySelector('.result-text');
 const result = document.querySelector('.result');
-const gameScore = document.querySelector('.game-score');
-const rockButton = document.querySelector('.rock');
-const paperButton = document.querySelector('.paper');
-const scissorsButton = document.querySelector('.scissors');
+const playerScoreDisplay = document.querySelector('.player-score-display')
+const computerScoreDisplay = document.querySelector('.computer-score-display')
+const rockButton = document.querySelector('.rock-button');
+const paperButton = document.querySelector('.paper-button');
+const scissorsButton = document.querySelector('.scissors-button');
+const botRock = document.querySelector('.bot-rock');
+const botPaper = document.querySelector('.bot-paper');
+const botScissors = document.querySelector('.bot-scissors');
 
 let computerSelection;
 
@@ -12,7 +16,34 @@ let computerSelection;
 
 function getComputerChoice() {
     const weapons = ['rock', 'paper', 'scissors'];
-    choice = weapons[Math.floor(Math.random() * weapons.length)]
+    choice = weapons[Math.floor(Math.random() * weapons.length)];
+    switch (choice) {
+        case 'rock': 
+            botRock.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            botRock.style.color = 'black';
+            botPaper.style.backgroundColor = '';
+            botPaper.style.color = '';
+            botScissors.style.backgroundColor = '';
+            botScissors.style.color = '';
+        break;
+        case 'paper':
+            botRock.style.backgroundColor = '';
+            botRock.style.color = '';
+            botPaper.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            botPaper.style.color = 'black';
+            botScissors.style.backgroundColor = '';
+            botScissors.style.color = '';
+        break;
+        case 'scissors':
+            botRock.style.backgroundColor = '';
+            botRock.style.color = '';
+            botPaper.style.backgroundColor = '';
+            botPaper.style.color = '';
+            botScissors.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+            botScissors.style.color = 'black';
+        break;
+    }
+    
     return choice;
 }
 
@@ -20,7 +51,7 @@ function getComputerChoice() {
 
 function playRound(playerSelection, computerSelection) {
     computerSelection = getComputerChoice();
-    if (
+        if (
     (playerSelection == 'rock' && computerSelection == 'rock') ||
     (playerSelection == 'paper' && computerSelection == 'paper') ||
     (playerSelection == 'scissors' && computerSelection == 'scissors')
@@ -47,14 +78,17 @@ function playRound(playerSelection, computerSelection) {
 }
 
 
+
 // SCORE KEEPING AND GAME INITIALIZATION
 
 let playerScore = 0;
 let computerScore = 0;
-gameScore.textContent = `Player: ${playerScore} - Computer: ${computerScore}`;
+playerScoreDisplay.textContent = `Player: ${playerScore}`;
+computerScoreDisplay.textContent = `Computer: ${computerScore}`;
 
 function updateScore(playerScore, computerScore) {
-    gameScore.textContent = `Player: ${playerScore} - Computer: ${computerScore}`
+    playerScoreDisplay.innerHTML = `Player: ${playerScore}`;
+    computerScoreDisplay.innerHTML = `Computer: ${computerScore}`;
 }
 
 function playGame() {
@@ -62,11 +96,39 @@ function playGame() {
     updateScore(playerScore, computerScore);
 }
 
+
 // PLAYER CHOICE
 
-rockButton.addEventListener('click', () => {playerSelection = 'rock'; playGame();});
-paperButton.addEventListener('click', () => {playerSelection = 'paper'; playGame();});
-scissorsButton.addEventListener('click', () => {playerSelection = 'scissors'; playGame();});
+rockButton.addEventListener('click', () => {
+    playerSelection = 'rock'; 
+    playGame();
+    rockButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+    rockButton.style.color = 'black';
+    paperButton.style.backgroundColor = '';
+    paperButton.style.color = '';
+    scissorsButton.style.backgroundColor = '';
+    scissorsButton.style.color = '';
+});
+paperButton.addEventListener('click', () => {
+    playerSelection = 'paper'; 
+    playGame();
+    rockButton.style.backgroundColor = '';
+    rockButton.style.color = '';
+    paperButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+    paperButton.style.color = 'black';
+    scissorsButton.style.backgroundColor = '';
+    scissorsButton.style.color = '';
+});
+scissorsButton.addEventListener('click', () => {
+    playerSelection = 'scissors'; 
+    playGame();
+    rockButton.style.backgroundColor = '';
+    rockButton.style.color = '';
+    paperButton.style.backgroundColor = '';
+    paperButton.style.color = '';
+    scissorsButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+    scissorsButton.style.color = 'black';
+});
 
 // HELPER FUNCTIONS
 
