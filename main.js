@@ -22,8 +22,8 @@ function getComputerChoice() {
     choice = weapons[Math.floor(Math.random() * weapons.length)];
     switch (choice) {
         case 'rock': 
-            botRock.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            botRock.style.color = 'black';
+            botRock.style.backgroundColor = '#2B2C28';
+            botRock.style.color = '#7DE2D1';
             botPaper.style.backgroundColor = '';
             botPaper.style.color = '';
             botScissors.style.backgroundColor = '';
@@ -32,8 +32,8 @@ function getComputerChoice() {
         case 'paper':
             botRock.style.backgroundColor = '';
             botRock.style.color = '';
-            botPaper.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            botPaper.style.color = 'black';
+            botPaper.style.backgroundColor = '#2B2C28';
+            botPaper.style.color = '#7DE2D1';
             botScissors.style.backgroundColor = '';
             botScissors.style.color = '';
         break;
@@ -42,8 +42,8 @@ function getComputerChoice() {
             botRock.style.color = '';
             botPaper.style.backgroundColor = '';
             botPaper.style.color = '';
-            botScissors.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            botScissors.style.color = 'black';
+            botScissors.style.backgroundColor = '#2B2C28';
+            botScissors.style.color = '#7DE2D1';
         break;
     }
     
@@ -153,8 +153,8 @@ function capitalize(string) {
 function playerButtons(playerSelection) {
     switch (playerSelection) {
         case 'rock': 
-            rockButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            rockButton.style.color = 'black';
+            rockButton.style.backgroundColor = '#2B2C28';
+            rockButton.style.color = '#7DE2D1';
             paperButton.style.backgroundColor = '';
             paperButton.style.color = '';
             scissorsButton.style.backgroundColor = '';
@@ -163,8 +163,8 @@ function playerButtons(playerSelection) {
         case 'paper':
             rockButton.style.backgroundColor = '';
             rockButton.style.color = '';
-            paperButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            paperButton.style.color = 'black';
+            paperButton.style.backgroundColor = '#2B2C28';
+            paperButton.style.color = '#7DE2D1';
             scissorsButton.style.backgroundColor = '';
             scissorsButton.style.color = '';
         break;
@@ -173,8 +173,8 @@ function playerButtons(playerSelection) {
             rockButton.style.color = '';
             paperButton.style.backgroundColor = '';
             paperButton.style.color = '';
-            scissorsButton.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
-            scissorsButton.style.color = 'black';
+            scissorsButton.style.backgroundColor = '#2B2C28';
+            scissorsButton.style.color = '#7DE2D1';
         break;
     }
 }
